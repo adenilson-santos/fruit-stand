@@ -1,7 +1,10 @@
+const { Sale } = require('../models')
+
 class DashboardController {
-  sellerCreate (req, res) {
-    console.log(req.session.user)
-    res.render('dashboard/seller')
+  async sellerCreate (req, res) {
+    const sales = await Sale.findAll()
+
+    res.render('dashboard/seller', { sales })
   }
 
   adminCreate (req, res) {

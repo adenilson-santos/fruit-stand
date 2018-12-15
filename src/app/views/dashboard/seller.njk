@@ -4,6 +4,32 @@
 
   <h1>Olá vendedor, {{user.name}}</h1>
 
+  <div class="sales">
+
+    {% for sale in sales %}
+
+      {% if sale.sold === false %}
+
+      <ul>
+        <li><img src="/images/{{sale.image}}" height="100"></li>
+        <li><strong>Fruta:</strong> {{sale.fruit}}</li>
+        <li><strong>Quantidade:</strong> {{sale.amount}}</li>
+        <li><strong>Preço:</strong> {{sale.price}}</li>
+        <li><strong>Classificação:</strong> {{sale.classification}}</li>
+        <li><strong>Fresca?</strong> {% if sale.fresh === true %}Sim{% endif %} {% if sale.fresh === false %}Não{% endif %}</li>
+
+        {% if user.admin ===false %}
+        <a href="/app/seller/dashboard/sold/{{sale.id}}">Vender</a>
+        {% endif %}
+
+      </ul>
+
+      {% endif %}
+
+    {% endfor %}
+
+  </div>
+
   <a href="/logout">Sair</a>
 
 {% endblock %}

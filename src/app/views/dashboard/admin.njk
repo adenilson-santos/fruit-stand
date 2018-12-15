@@ -2,9 +2,9 @@
 
 {% block body %}
 
-  <h1>Olá Administrador, {{user.name}}</h1>
+  <h1>Olá administrador, {{user.name}}</h1>
 
-  <form action="/register" method="post" enctype="multipart/form-data">
+  <form action="/app/admin/dashboard/register" method="post" enctype="multipart/form-data">
 
     <h3>Registrar uma nova fruta</h3>
 
@@ -12,12 +12,12 @@
       <img src="/images/default.svg" height="70">
     </label>
 
-    <input type="file" name="image" id="image" />
+    <input type="file" name="image" id="image" >
 
     <label for="fruit">
       <strong>Nome da fruta</strong>
 
-      <input type="text" name="fruit" id="fruit" placeholder="Ex: Melancia"/>
+      <input type="text" name="fruit" id="fruit" placeholder="Ex: Melancia">
     </label>
 
     <strong>Classificação da fruta</strong>
@@ -60,5 +60,14 @@
   <a href="/logout">Sair</a>
 
   </form>
+
+  <script type="text/javascript" >
+    const avatarInput = document.getElementById("image");
+    const imgAvatar = document.querySelector("label[for=image] img")
+    avatarInput.onchange = function(e){
+      imgAvatar.classList.add('preview');
+      imgAvatar.src = URL.createObjectURL(e.target.files[0])
+    }
+  </script>
 
 {% endblock %}

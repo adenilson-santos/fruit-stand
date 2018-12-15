@@ -4,7 +4,7 @@
 }
 
 body {
-  background: rgb(46, 116, 44);
+  background: rgb(79, 158, 231);
   color: rgb(68, 61, 61);
   min-height: 100vh;
   height: auto;
@@ -12,6 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: "Montserrat", sans-serif;
+  padding: 10px;
 }
 
 button,
@@ -27,6 +28,17 @@ h1 {
   margin-bottom: 10px;
   color: white;
   font-family: "Raleway", sans-serif;
+}
+
+a[href="/logout"] {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px 0;
+  background: rgb(158, 24, 24);
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
 }
 
 .auth-wrapper {
@@ -84,6 +96,10 @@ h1 {
   align-items: center;
 }
 
+.main-wrapper h1 img {
+  border-radius: 50%;
+}
+
 .main-wrapper button {
   font-weight: 700;
   color: white;
@@ -127,12 +143,35 @@ h1 {
   margin-bottom: 20px;
 }
 
-.main-wrapper form a {
+.main-wrapper .sales ul {
+  list-style: none;
+  background: white;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  border-radius: 10px;
+  width: 200px;
+}
+
+.main-wrapper .sales ul a {
+  background: rgb(52, 119, 32);
+  padding: 5px 0;
   width: 100%;
   text-align: center;
-  margin-top: 10px;
-  padding: 10px 0;
-  background: rgb(158, 24, 24);
-  color: white;
   text-decoration: none;
+  color: white;
+}
+
+.sales {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main-wrapper .sales ul li {
+  margin: 5px 0;
 }

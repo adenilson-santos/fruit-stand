@@ -7,7 +7,7 @@
   <form action="/signup" method="post" enctype="multipart/form-data">
 
     <label for="avatar">
-      <img src="" alt="">
+      <img src="/images/default.svg" height="70">
     </label>
 
     <input type="file" name="avatar" id="avatar">
@@ -22,5 +22,14 @@
     <button type="submit">Criar Usuário</button>
 
   </form>
+
+  <script type="text/javascript" >
+    const avatarInput = document.getElementById("avatar");
+    const imgAvatar = document.querySelector("label[for=avatar] img")
+    avatarInput.onchange = function(e){
+      imgAvatar.classList.add('preview');
+      imgAvatar.src = URL.createObjectURL(e.target.files[0])
+    }
+  </script>
 
 {% endblock %}

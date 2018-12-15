@@ -8,6 +8,8 @@ const UserController = require('./app/controllers/UserController')
 const FileController = require('./app/controllers/FileController')
 const SessionController = require('./app/controllers/SessionController')
 const DashboardController = require('./app/controllers/DashboardController')
+const SalesController = require('./app/controllers/SalesController')
+const SellerController = require('./app/controllers/SellerController')
 
 const authMiddleware = require('./app/middlewares/auth')
 const guestMiddleware = require('./app/middlewares/guest')
@@ -30,5 +32,13 @@ routes.get(
   adminMiddleware,
   DashboardController.adminCreate
 )
+
+routes.post(
+  '/app/admin/dashboard/register',
+  upload.single('image'),
+  SalesController.create
+)
+
+routes.get('/app/seller/dashboard/sold/:fruit', SellerController.index)
 
 module.exports = routes

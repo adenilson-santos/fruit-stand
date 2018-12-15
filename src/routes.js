@@ -14,6 +14,7 @@ const SellerController = require('./app/controllers/SellerController')
 const authMiddleware = require('./app/middlewares/auth')
 const guestMiddleware = require('./app/middlewares/guest')
 const adminMiddleware = require('./app/middlewares/admin')
+const reportMiddleware = require('./app/middlewares/report')
 
 routes.use('/app', authMiddleware)
 
@@ -28,6 +29,11 @@ routes.post('/signup', upload.single('avatar'), UserController.store)
 
 routes.get('/app/seller/dashboard', DashboardController.sellerCreate)
 routes.get(
+  '/app/seller/dashboard/reports',
+  reportMiddleware,
+  DashboardController.sellerReport
+)
+routes.get(
   '/app/admin/dashboard',
   adminMiddleware,
   DashboardController.adminCreate
@@ -39,6 +45,6 @@ routes.post(
   SalesController.create
 )
 
-routes.get('/app/seller/dashboard/sold/:fruit', SellerController.index)
+routes.post('/app/seller/dashboard/sold/:fruitname', SellerController.index)
 
 module.exports = routes

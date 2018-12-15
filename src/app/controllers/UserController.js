@@ -6,11 +6,16 @@ class UserController {
   }
 
   store (req, res) {
-    const { filename } = req.file
+    if (req.file) {
+      const { filename } = req.file
+      User.create({ ...req.body, avatar: filename })
 
-    User.create({ ...req.body, avatar: filename })
+      return res.redirect('/signup')
+    }
 
-    res.redirect('/signup')
+    User.create({ ...req.body, avatar: 'none' })
+
+    return res.redirect('/')
   }
 }
 

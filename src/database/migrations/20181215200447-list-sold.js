@@ -2,12 +2,12 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('sales', {
+    return queryInterface.createTable('solds', {
       id: {
-        primaryKey: true,
-        autoIncrement: true,
+        type: Sequelize.INTEGER,
         allowNull: false,
-        type: Sequelize.INTEGER
+        primaryKey: true,
+        autoIncrement: true
       },
       fruit: {
         allowNull: false,
@@ -30,16 +30,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      price: {
+      profit: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      admin_id: {
+      sold_by: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
+        type: Sequelize.STRING
       },
       created_at: {
         type: Sequelize.DATE,
@@ -53,6 +50,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('sales')
+    return queryInterface.dropTable('solds')
   }
 }

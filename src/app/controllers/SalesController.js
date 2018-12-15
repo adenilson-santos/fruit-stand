@@ -2,11 +2,25 @@ const { Sale } = require('../models')
 
 class SalesController {
   create (req, res) {
-    const { filename } = req.file
+    if (req.file) {
+      const { filename } = req.file
 
-    Sale.create({ ...req.body, image: filename, admin_id: req.session.user.id })
+      Sale.create({
+        ...req.body,
+        image: filename,
+        admin_id: req.session.user.id
+      })
 
-    res.redirect('/app/admin/dashboard')
+      return res.redirect('/app/admin/dashboard')
+    }
+
+    Sale.create({
+      ...req.body,
+      image: 'logo.svg',
+      admin_id: req.session.user.id
+    })
+
+    return res.redirect('/app/admin/dashboard')
   }
 }
 

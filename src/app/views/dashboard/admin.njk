@@ -52,11 +52,12 @@
     </label>
     <label for="price">
      <strong>Valor de venda</strong><br>
-      <strong>R$</strong> <input type="number" name="price" id="price"/> <strong>,00</strong>
+      <strong>R$</strong> <input type="number" min="0.01" step="0.01" value="0.0" name="price" id="price"/>
     </label>
 
     <button type="submit">Cadastrar fruta</button>
 
+  <a href="/app/seller/dashboard" class="redirect">Ver frutas a venda</a>
   <a href="/logout">Sair</a>
 
   </form>

@@ -2,13 +2,19 @@
 
 {% block body %}
 
-  <h1>Olá vendedor, {{user.name}}</h1>
+  <h1>Bem-vindo, {{user.name}}</h1>
+
+  {% if alert %}
+
+  <span class="alert">{{alert}}</span>
+
+  {% endif %}
 
   <div class="sales">
 
     {% for sale in sales %}
 
-      {% if sale.sold === false %}
+    {% if sale.amount > 0 %}
 
       <ul>
         <li><img src="/images/{{sale.image}}" height="100"></li>
@@ -16,10 +22,38 @@
         <li><strong>Quantidade:</strong> {{sale.amount}}</li>
         <li><strong>Preço:</strong> {{sale.price}}</li>
         <li><strong>Classificação:</strong> {{sale.classification}}</li>
-        <li><strong>Fresca?</strong> {% if sale.fresh === true %}Sim{% endif %} {% if sale.fresh === false %}Não{% endif %}</li>
+        <li style="border-bottom:1px black solid; padding-bottom:10px; margin-bottom:10px"><strong>Fresca?</strong> {% if sale.fresh === true %}Sim{% endif %} {% if sale.fresh === false %}Não{% endif %}</li>
 
-        {% if user.admin ===false %}
-        <a href="/app/seller/dashboard/sold/{{sale.id}}">Vender</a>
+        {% if user.admin === false %}
+        <form action="/app/seller/dashboard/sold/{{sale.id}}" method="post" class="sale">
+
+        <li><strong>Quantos? <input type="number" name="amount" /></strong></li>
+
+          <div>
+          <strong>Desconto:</strong> <br>
+          <label for="5">
+            <input type="radio" name="discount" id="5" value="5">
+          5%
+          </label>
+          <label for="10">
+            <input type="radio" name="discount" id="10" value="10">
+          10%
+          </label>
+          <label for="15">
+            <input type="radio" name="discount" id="15" value="15">
+          15%
+          </label>
+          <label for="20">
+            <input type="radio" name="discount" id="20" value="20">
+          20%
+          </label>
+          <label for="25">
+            <input type="radio" name="discount" id="25" value="25">
+          25%
+          </label>
+        </div>
+          <button type="submit">Vender</button>
+        </form>
         {% endif %}
 
       </ul>
@@ -30,6 +64,12 @@
 
   </div>
 
+    {% if user.admin === true %}
+      <a href="/app/admin/dashboard" class="redirect">Voltar ao Dashboard de admin</a>
+    {% endif %}
+    {% if user.admin ===false %}
+      <a href="/app/seller/dashboard/reports" class="redirect">Ver meu relatório de vendas</a>
+    {% endif %}
   <a href="/logout">Sair</a>
 
 {% endblock %}

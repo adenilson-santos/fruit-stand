@@ -1,0 +1,35 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+
+  <h1>Olá vendedor, {{user.name}}</h1>
+  <h3>Veja seu relatório de vendas.</h3>
+
+  <div class="sales">
+
+    {% for sold in solds %}
+
+      {% if sold.sold_by === user.username %}
+
+      <ul>
+        <li><strong>Data e Hora da venda:</strong> {{sold.created_at}}</li>
+        <li><img src="/images/{{sold.image}}" height="100"></li>
+        <li><strong>Fruta:</strong> {{sold.fruit}}</li>
+        <li><strong>Quantidade:</strong> {{sold.amount}}</li>
+        <li><strong>Preço:</strong> {{sold.profit}}</li>
+        <li><strong>Classificação:</strong> {{sold.classification}}</li>
+        <li><strong>Fresca?</strong> {% if sold.fresh === true %}Sim{% endif %} {% if sale.fresh === false %}Não{% endif %}</li>
+
+      </ul>
+      {% endif %}
+
+    {% endfor %}
+
+  </div>
+
+    {% if user.admin ===false %}
+      <a href="/app/seller/dashboard" class="redirect">Voltar para dashboard de vendas</a>
+    {% endif %}
+  <a href="/logout">Sair</a>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+
+  <h1>Olá Administrador, {{user.name}}</h1>
+
+  <form action="/register" method="post" enctype="multipart/form-data">
+    <label for="image">
+      <img src="" alt="">
+    </label>
+
+    <input type="file" name="fruit_image" id="fruit-image" />
+
+    <label for="fruit">
+      <strong>Nome da fruta</strong>
+
+      <input type="text" name="fruit" id="fruit" placeholder="Melancia"/>
+    </label>
+
+    <strong>Classificação da fruta</strong>
+    <label for="extra">
+      <input type="radio" name="classification" id="extra" value="Extra">
+    Extra
+    </label>
+    <label for="first">
+      <input type="radio" name="classification" id="first" value="De primeira">
+    De primeira
+    </label>
+    <label for="second">
+      <input type="radio" name="classification" id="second" value="De segunda">
+    De segunda
+    </label>
+    <label for="third">
+      <input type="radio" name="classification" id="third" value="De terceira">
+    De terceira
+    </label>
+
+    <label for="fresh">
+      <strong>Fruta fresca?</strong>
+      <input type="checkbox" name="fresh" value="1" id="fresh"/>
+    </label>
+
+    <label for="amount">
+      <strong>Quantidade</strong>
+      <input type="number" name="amount" id="amount" />
+    </label>
+  <br>
+    <label for="price">
+     <strong>Valor de venda</strong><br>
+      <strong>R$</strong> <input type="number" name="price" id="price"/> <strong>,00</strong>
+    </label>
+
+    <button type="submit">Cadastrar fruta</button>
+
+  </form>
+
+  <a href="/logout">Sair</a>
+
+{% endblock %}

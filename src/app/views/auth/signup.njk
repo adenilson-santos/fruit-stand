@@ -1,0 +1,24 @@
+{% extends "_layouts/auth.njk" %}
+
+{% block body %}
+
+  <form action="/signup" method="post" enctype="multipart/form-data">
+
+    <label for="avatar">
+      <img src="" alt="">
+    </label>
+
+    <input type="file" name="avatar" id="avatar">
+    <input type="text" name="name" placeholder="Nome do funcionário">
+    <input type="text" name="username" placeholder="Username para o funcionário">
+    <input type="password" name="password" placeholder="Senha">
+    <label for="admin">
+    É Administrador?
+      <input type="checkbox" name="admin" value="1" id="admin">
+    </label>
+
+    <button type="submit">Criar Usuário</button>
+
+  </form>
+
+{% endblock %}

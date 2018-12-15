@@ -17,12 +17,9 @@ class SellerController {
     }
 
     const discountCalc = discount / 100
-
     const newPriceAmount = price * amount
-
     const newPrice = newPriceAmount * discountCalc
-
-    const profit = price - newPrice
+    const profit = newPriceAmount - newPrice
 
     sale.amount = sale.amount - amount
 

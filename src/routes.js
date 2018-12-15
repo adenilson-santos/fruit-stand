@@ -24,7 +24,7 @@ routes.get('/', guestMiddleware, SessionController.create)
 routes.post('/signin', SessionController.store)
 routes.get('/logout', SessionController.destroy)
 
-routes.get('/signup', guestMiddleware, UserController.create)
+// routes.get('/signup', guestMiddleware, UserController.create)
 routes.post('/signup', upload.single('avatar'), UserController.store)
 
 routes.get('/app/seller/dashboard', DashboardController.sellerCreate)

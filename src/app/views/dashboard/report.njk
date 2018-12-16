@@ -12,7 +12,7 @@
       {% if sold.sold_by === user.username %}
 
       <ul>
-        <li><strong>Data e Hora da venda:</strong> {{sold.created_at}}</li>
+        <li><strong>Data e Hora da venda:</strong> <br>  {{sold.created_at.getHours()}}:{{sold.created_at.getMinutes()}}:{{sold.created_at.getSeconds()}} {{sold.created_at.getDate()}}/{{sold.created_at.getMonth()}}/{{sold.created_at.getFullYear()}}</li>
         <li><img src="/images/{{sold.image}}" height="100"></li>
         <li><strong>Fruta:</strong> {{sold.fruit}}</li>
         <li><strong>Quantidade:</strong> {{sold.amount}}</li>

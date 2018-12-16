@@ -30,13 +30,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
+      price: {
+        allowNull: false,
+        type: Sequelize.FLOAT
+      },
       discount: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
       profit: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.FLOAT
       },
       sold_by: {
         allowNull: false,

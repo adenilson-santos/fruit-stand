@@ -9,11 +9,8 @@ class SellerController {
     const { fruit, image, classification, fresh, price } = sale
     const { amount, discount } = req.body
 
-    if (amount > sale.amount) {
-      const alert =
-        'Você está inserindo mais que a quantidade disponível da fruta'
-      const sales = await Sale.findAll()
-      return res.render('dashboard/seller', { alert, sales })
+    if (amount > sale.amount || amount < 0) {
+      return res.redirect('/app/seller/dashboard')
     }
 
     const discountCalc = discount / 100
@@ -31,6 +28,7 @@ class SellerController {
       classification,
       fresh,
       amount,
+      price: price.toFixed(2),
       discount,
       profit: profit.toFixed(2),
       sold_by: req.session.user.username

@@ -7,7 +7,7 @@ module.exports = (Sequelize, DataTypes) => {
     classification: DataTypes.STRING,
     fresh: DataTypes.BOOLEAN,
     amount: DataTypes.INTEGER,
-    price: DataTypes.STRING
+    price: DataTypes.FLOAT
   })
 
   Sale.associate = models => {

@@ -5,8 +5,9 @@ module.exports = (Sequelize, DataTypes) => {
     classification: DataTypes.STRING,
     fresh: DataTypes.BOOLEAN,
     amount: DataTypes.INTEGER,
+    price: DataTypes.FLOAT,
     discount: DataTypes.INTEGER,
-    profit: DataTypes.STRING,
+    profit: DataTypes.FLOAT,
     sold_by: DataTypes.STRING
   })
 

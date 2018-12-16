@@ -10,9 +10,42 @@
 
   {% endif %}
 
-  <input type="search" name="search" id="search" placeholder="Pesquise uma fruta">
+  <form action="/app/seller/dashboard" method="get" id="filter">
+    <input type="text" name="title" id="search" placeholder="Pesquise uma fruta">
+    <input type="text" name="price_max" id="search" placeholder="Preço máximo">
+    <input type="text" name="price_min" id="search" placeholder="Preço mínimo">
+    <input type="text" name="amount_max" id="search" placeholder="Quantidade máxima">
+    <input type="text" name="amount_min" id="search" placeholder="Quantidade mínima">
 
-  <strong style="color:white">Total de itens filtrados: {{total}}</strong>
+    <div>
+      <p>Classificação</p>
+      <select name="classification" >
+        <option></option>
+        <option value="0">Extra</option>
+        <option value="1">De Primeira</option>
+        <option value="2">De Segunda</option>
+        <option value="3">De Terceira</option>
+      </select>
+    </div>
+
+    <br>
+
+    <div>
+      <p>Fresca</p>
+      <label for="fresh-true">
+        Sim
+        <input type="radio" name="fresh" value="1" id="fresh-true">
+      </label>
+      <label for="fresh-false">
+        Não
+        <input type="radio" name="fresh" value="0" id="fresh-false">
+      </label>
+    </div>
+    <button type="submit" title="filtrar" ><img src="/images/lupa.svg" height="25"></button>
+  </form>
+
+
+  <strong style="color:white">Total de itens encontrados: {{total}}</strong>
   <div class="sales">
 
     {% for doc in docs %}
@@ -23,8 +56,8 @@
         <li><img src="/images/{{doc.image}}" height="100"></li>
         <li><strong>Fruta:</strong> {{doc.fruit}}</li>
         <li><strong>Quantidade:</strong> {{doc.amount}}</li>
-        <li><strong>Preço:</strong> {{doc.price}}</li>
-        <li><strong>Classificação:</strong> {{doc.classification}}</li>
+        <li><strong>Preço:</strong> R$ {{doc.price}}</li>
+        <li><strong>Classificação:</strong> {% if doc.classification === '0' %} Extra {% endif %} {% if doc.classification === '1' %} De Primeira {% endif %} {% if doc.classification === '2' %} De Segunda {% endif %} {% if doc.classification === '3' %} De Terceira {% endif %}</li>
         <li style="border-bottom:1px black solid; padding-bottom:10px; margin-bottom:10px"><strong>Fresca?</strong> {% if doc.fresh === true %}Sim{% endif %} {% if doc.fresh === false %}Não{% endif %}</li>
 
         {% if user.admin === false %}

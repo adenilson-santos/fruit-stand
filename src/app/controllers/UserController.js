@@ -13,7 +13,7 @@ class UserController {
       return res.redirect('/signup')
     }
 
-    User.create({ ...req.body, avatar: 'none' })
+    User.create({ ...req.body, avatar: '/images/defaultavatar.svg' })
 
     return res.redirect('/')
   }

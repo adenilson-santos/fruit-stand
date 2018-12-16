@@ -20,6 +20,27 @@ input {
   outline: 0;
 }
 
+#filter {
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+#filter button {
+  padding: 0;
+  border-radius: none;
+  background: none;
+  box-shadow: none;
+}
+
+#filter div {
+  margin: 10px;
+}
+
+#filter input {
+  margin: 10px;
+}
+
 #caps {
   color: red;
   margin-bottom: 10px;

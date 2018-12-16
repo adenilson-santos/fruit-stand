@@ -20,7 +20,24 @@ class DashboardController {
       }
     }
 
-    console.log(filters)
+    if (req.query.amount_min || req.query.amount_max) {
+      filters.amount = {}
+
+      if (req.query.amount_min) {
+        filters.amount.$gte = req.query.amount_min
+      }
+      if (req.query.amount_max) {
+        filters.amount.$lte = req.query.amount_max
+      }
+    }
+
+    if (req.query.fresh) {
+      filters.fresh = { [Op.eq]: req.query.fresh }
+    }
+
+    if (req.query.classification) {
+      filters.classification = { [Op.eq]: req.query.classification }
+    }
 
     if (req.query.title) {
       filters.fruit = { [Op.like]: `%${req.query.title}%` }
@@ -28,7 +45,7 @@ class DashboardController {
 
     const options = {
       page: req.query.page || 1, // Default 1
-      paginate: 10
+      paginate: 25
     }
 
     // where: { price: { [Op.gte]: 3 } }

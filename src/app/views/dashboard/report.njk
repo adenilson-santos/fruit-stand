@@ -3,7 +3,7 @@
 {% block body %}
 
   <h1>Olá vendedor, {{user.name}}</h1>
-  <h3>Veja seu relatório de vendas.</h3>
+  <h3 style="color:white">Veja seu relatório de vendas.</h3>
 
   <div class="sales">
 
@@ -16,9 +16,10 @@
         <li><img src="/images/{{sold.image}}" height="100"></li>
         <li><strong>Fruta:</strong> {{sold.fruit}}</li>
         <li><strong>Quantidade:</strong> {{sold.amount}}</li>
+        <li><strong>Preço:</strong> R$ {{sold.price}}</li>
         <li><strong>Desconto:</strong> {{sold.discount}}%</li>
         <li><strong>Lucro:</strong> R${{sold.profit}}</li>
-        <li><strong>Classificação:</strong> {{sold.classification}}</li>
+        <li><strong>Classificação:</strong> {% if sold.classification === '0' %} Extra {% endif %} {% if sold.classification === '1' %} De Primeira {% endif %} {% if sold.classification === '2' %} De Segunda {% endif %} {% if sold.classification === '3' %} De Terceira {% endif %}</li>
         <li><strong>Fresca?</strong> {% if sold.fresh === true %}Sim{% endif %} {% if sale.fresh === false %}Não{% endif %}</li>
 
       </ul>

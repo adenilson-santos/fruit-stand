@@ -1,10 +1,45 @@
 const { Sale, Sold } = require('../models')
+const { Op } = require('sequelize')
 
 class DashboardController {
   async sellerCreate (req, res) {
-    const sales = await Sale.findAll()
+    // const sales = await Sale.findAll({
+    //   order: [['created_at', 'DESC']]
+    // })
 
-    res.render('dashboard/seller', { sales })
+    const filters = {}
+
+    if (req.query.price_min || req.query.price_max) {
+      filters.price = {}
+
+      if (req.query.price_min) {
+        filters.price.$gte = req.query.price_min
+      }
+      if (req.query.price_max) {
+        filters.price.$lte = req.query.price_max
+      }
+    }
+
+    console.log(filters)
+
+    if (req.query.title) {
+      filters.fruit = { [Op.like]: `%${req.query.title}%` }
+    }
+
+    const options = {
+      page: req.query.page || 1, // Default 1
+      paginate: 10
+    }
+
+    // where: { price: { [Op.gte]: 3 } }
+    // fruit: { [Op.like]: `%Laranja%` }
+
+    const { docs, pages, total } = await Sale.paginate(
+      { where: filters },
+      options
+    )
+
+    res.render('dashboard/seller', { docs, pages, total })
   }
 
   adminCreate (req, res) {
@@ -13,7 +48,9 @@ class DashboardController {
   }
 
   async sellerReport (req, res) {
-    const solds = await Sold.findAll()
+    const solds = await Sold.findAll({
+      order: [['created_at', 'DESC']]
+    })
 
     res.render('dashboard/report', { solds })
   }

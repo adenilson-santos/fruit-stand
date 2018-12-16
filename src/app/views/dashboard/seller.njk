@@ -10,47 +10,48 @@
 
   {% endif %}
 
-  <input type="search" name="search" id="search">
+  <input type="search" name="search" id="search" placeholder="Pesquise uma fruta">
 
+  <strong style="color:white">Total de itens filtrados: {{total}}</strong>
   <div class="sales">
 
-    {% for sale in sales %}
+    {% for doc in docs %}
 
-    {% if sale.amount > 0 %}
+    {% if doc.amount > 0 %}
 
       <ul>
-        <li><img src="/images/{{sale.image}}" height="100"></li>
-        <li><strong>Fruta:</strong> {{sale.fruit}}</li>
-        <li><strong>Quantidade:</strong> {{sale.amount}}</li>
-        <li><strong>Preço:</strong> {{sale.price}}</li>
-        <li><strong>Classificação:</strong> {{sale.classification}}</li>
-        <li style="border-bottom:1px black solid; padding-bottom:10px; margin-bottom:10px"><strong>Fresca?</strong> {% if sale.fresh === true %}Sim{% endif %} {% if sale.fresh === false %}Não{% endif %}</li>
+        <li><img src="/images/{{doc.image}}" height="100"></li>
+        <li><strong>Fruta:</strong> {{doc.fruit}}</li>
+        <li><strong>Quantidade:</strong> {{doc.amount}}</li>
+        <li><strong>Preço:</strong> {{doc.price}}</li>
+        <li><strong>Classificação:</strong> {{doc.classification}}</li>
+        <li style="border-bottom:1px black solid; padding-bottom:10px; margin-bottom:10px"><strong>Fresca?</strong> {% if doc.fresh === true %}Sim{% endif %} {% if doc.fresh === false %}Não{% endif %}</li>
 
         {% if user.admin === false %}
-        <form action="/app/seller/dashboard/sold/{{sale.id}}" method="post" class="sale">
+        <form action="/app/seller/dashboard/sold/{{doc.id}}" method="post" class="sale">
 
         <li><strong>Quantos? <input type="number" name="amount" /></strong></li>
 
           <div>
           <strong>Desconto:</strong> <br>
-          <label for="5-{{sale.id}}">
-            <input type="radio" name="discount" id="5-{{sale.id}}" value="5">
+          <label for="5-{{doc.id}}">
+            <input type="radio" name="discount" id="5-{{doc.id}}" value="5">
           5%
           </label>
-          <label for="10-{{sale.id}}">
-            <input type="radio" name="discount" id="10-{{sale.id}}" value="10">
+          <label for="10-{{doc.id}}">
+            <input type="radio" name="discount" id="10-{{doc.id}}" value="10">
           10%
           </label>
-          <label for="15-{{sale.id}}">
-            <input type="radio" name="discount" id="15-{{sale.id}}" value="15">
+          <label for="15-{{doc.id}}">
+            <input type="radio" name="discount" id="15-{{doc.id}}" value="15">
           15%
           </label>
-          <label for="20-{{sale.id}}">
-            <input type="radio" name="discount" id="20-{{sale.id}}" value="20">
+          <label for="20-{{doc.id}}">
+            <input type="radio" name="discount" id="20-{{doc.id}}" value="20">
           20%
           </label>
-          <label for="25-{{sale.id}}">
-            <input type="radio" name="discount" id="25-{{sale.id}}" value="25">
+          <label for="25-{{doc.id}}">
+            <input type="radio" name="discount" id="25-{{doc.id}}" value="25">
           25%
           </label>
         </div>
@@ -64,7 +65,10 @@
 
     {% endfor %}
 
+
+
   </div>
+  <strong style="color:white">Página: {{pages}}</strong>
 
     {% if user.admin === true %}
       <a href="/app/admin/dashboard" class="redirect">Voltar ao Dashboard de admin</a>

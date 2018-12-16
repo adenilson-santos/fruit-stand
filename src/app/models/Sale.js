@@ -1,3 +1,5 @@
+const sequelizePaginate = require('sequelize-paginate')
+
 module.exports = (Sequelize, DataTypes) => {
   const Sale = Sequelize.define('Sale', {
     fruit: DataTypes.STRING,
@@ -11,6 +13,8 @@ module.exports = (Sequelize, DataTypes) => {
   Sale.associate = models => {
     Sale.belongsTo(models.User, { as: 'user', foreignKey: 'admin_id' })
   }
+
+  sequelizePaginate.paginate(Sale)
 
   return Sale
 }

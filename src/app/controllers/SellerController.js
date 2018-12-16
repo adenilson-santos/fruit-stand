@@ -31,7 +31,8 @@ class SellerController {
       classification,
       fresh,
       amount,
-      profit,
+      discount,
+      profit: profit.toFixed(2),
       sold_by: req.session.user.username
     })
 

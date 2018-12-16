@@ -20,6 +20,11 @@ input {
   outline: 0;
 }
 
+#caps {
+  color: red;
+  margin-bottom: 10px;
+}
+
 input[type="file"] {
   display: none;
 }
@@ -166,6 +171,11 @@ a[href="/logout"] {
   margin-bottom: 20px;
 }
 
+.sales {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .main-wrapper .sales ul {
   list-style: none;
   background: white;
@@ -176,7 +186,7 @@ a[href="/logout"] {
   justify-content: center;
   margin: 10px;
   border-radius: 10px;
-  width: 220px;
+  width: 250px;
 }
 
 .main-wrapper .sales ul a {

@@ -16,7 +16,8 @@
         <li><img src="/images/{{sold.image}}" height="100"></li>
         <li><strong>Fruta:</strong> {{sold.fruit}}</li>
         <li><strong>Quantidade:</strong> {{sold.amount}}</li>
-        <li><strong>Preço:</strong> {{sold.profit}}</li>
+        <li><strong>Desconto:</strong> {{sold.discount}}%</li>
+        <li><strong>Lucro:</strong> R${{sold.profit}}</li>
         <li><strong>Classificação:</strong> {{sold.classification}}</li>
         <li><strong>Fresca?</strong> {% if sold.fresh === true %}Sim{% endif %} {% if sale.fresh === false %}Não{% endif %}</li>
 

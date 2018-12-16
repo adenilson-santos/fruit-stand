@@ -10,6 +10,8 @@
 
   {% endif %}
 
+  <input type="search" name="search" id="search">
+
   <div class="sales">
 
     {% for sale in sales %}
@@ -31,24 +33,24 @@
 
           <div>
           <strong>Desconto:</strong> <br>
-          <label for="5">
-            <input type="radio" name="discount" id="5" value="5">
+          <label for="5-{{sale.id}}">
+            <input type="radio" name="discount" id="5-{{sale.id}}" value="5">
           5%
           </label>
-          <label for="10">
-            <input type="radio" name="discount" id="10" value="10">
+          <label for="10-{{sale.id}}">
+            <input type="radio" name="discount" id="10-{{sale.id}}" value="10">
           10%
           </label>
-          <label for="15">
-            <input type="radio" name="discount" id="15" value="15">
+          <label for="15-{{sale.id}}">
+            <input type="radio" name="discount" id="15-{{sale.id}}" value="15">
           15%
           </label>
-          <label for="20">
-            <input type="radio" name="discount" id="20" value="20">
+          <label for="20-{{sale.id}}">
+            <input type="radio" name="discount" id="20-{{sale.id}}" value="20">
           20%
           </label>
-          <label for="25">
-            <input type="radio" name="discount" id="25" value="25">
+          <label for="25-{{sale.id}}">
+            <input type="radio" name="discount" id="25-{{sale.id}}" value="25">
           25%
           </label>
         </div>

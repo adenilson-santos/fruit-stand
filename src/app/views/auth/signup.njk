@@ -19,6 +19,8 @@
       <input type="checkbox" name="admin" value="1" id="admin">
     </label>
 
+    <div id="caps"></div>
+
     <button type="submit">Criar Usuário</button>
 
   </form>
@@ -30,6 +32,17 @@
       imgAvatar.classList.add('preview');
       imgAvatar.src = URL.createObjectURL(e.target.files[0])
     }
+  </script>
+
+  <script type="text/javascript">
+    document.addEventListener('keydown', function( event ) {
+      var flag = event.getModifierState && event.getModifierState('CapsLock');
+      if(flag) {
+        document.getElementById('caps').innerHTML = 'CapsLock ligado';
+      } else {
+        document.getElementById('caps').innerHTML = '';
+      }
+    });
   </script>
 
 {% endblock %}

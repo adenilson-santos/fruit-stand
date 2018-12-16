@@ -30,6 +30,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
+      discount: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       profit: {
         allowNull: false,
         type: Sequelize.STRING

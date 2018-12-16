@@ -68,7 +68,7 @@
           <div>
           <strong>Desconto:</strong> <br>
           <label for="5-{{doc.id}}">
-            <input type="radio" name="discount" id="5-{{doc.id}}" value="5">
+            <input type="radio" name="discount" checked id="5-{{doc.id}}" value="5">
           5%
           </label>
           <label for="10-{{doc.id}}">
@@ -101,7 +101,7 @@
 
 
   </div>
-  <strong style="color:white">Página: {{pages}}</strong>
+  <strong style="color:white">Total de páginas: {{pages}}</strong>
 
     {% if user.admin === true %}
       <a href="/app/admin/dashboard" class="redirect">Voltar ao Dashboard de admin</a>

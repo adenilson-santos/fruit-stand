@@ -43,9 +43,11 @@ class DashboardController {
       filters.fruit = { [Op.like]: `%${req.query.title}%` }
     }
 
+    const page = req.query.page
+
     const options = {
-      page: req.query.page || 1, // Default 1
-      paginate: 25,
+      page: page || 1, // Default 1
+      paginate: 10,
       order: [['amount', 'DESC']],
       where: filters
     }

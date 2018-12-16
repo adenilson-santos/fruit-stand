@@ -45,16 +45,15 @@ class DashboardController {
 
     const options = {
       page: req.query.page || 1, // Default 1
-      paginate: 25
+      paginate: 25,
+      order: [['amount', 'DESC']],
+      where: filters
     }
 
     // where: { price: { [Op.gte]: 3 } }
     // fruit: { [Op.like]: `%Laranja%` }
 
-    const { docs, pages, total } = await Sale.paginate(
-      { where: filters },
-      options
-    )
+    const { docs, pages, total } = await Sale.paginate(options)
 
     res.render('dashboard/seller', { docs, pages, total })
   }

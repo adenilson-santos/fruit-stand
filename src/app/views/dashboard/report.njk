@@ -20,7 +20,7 @@
         <li><strong>Desconto:</strong> {{sold.discount}}%</li>
         <li><strong>Lucro:</strong> R${{sold.profit}}</li>
         <li><strong>Classificação:</strong> {% if sold.classification === '0' %} Extra {% endif %} {% if sold.classification === '1' %} De Primeira {% endif %} {% if sold.classification === '2' %} De Segunda {% endif %} {% if sold.classification === '3' %} De Terceira {% endif %}</li>
-        <li><strong>Fresca?</strong> {% if sold.fresh === true %}Sim{% endif %} {% if sale.fresh === false %}Não{% endif %}</li>
+        <li><strong>Fresca?</strong> {% if sold.fresh === true %}Sim{% endif %} {% if sold.fresh === false %}Não{% endif %}</li>
 
       </ul>
       {% endif %}

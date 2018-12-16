@@ -10,9 +10,12 @@
   <h3 style="margin-bottom:10px">Entre com seu usuário e senha</h3>
 
 
-    <input type="text" name="username" placeholder="Insira seu username">
-    <input type="password" name="password" placeholder="Insira sua senha">
+    <input id="username" type="text" name="username" placeholder="Insira seu username">
+    <input id="password" type="password" name="password" placeholder="Insira sua senha">
     <div id="caps"></div>
+    <div id="errors"></div>
+
+    {% if error %} <span style="position:absolute; left:10px; top:10px; background:red; color:white; text-align:center; padding:5px;">{{error}}</span> {% endif %}
 
     <button type="submit">Entrar</button>
 
@@ -27,6 +30,22 @@
         document.getElementById('caps').innerHTML = '';
       }
     });
+  </script>
+
+  <script type="text/javascript">
+    document.querySelector('form').addEventListener('submit', (e) => {
+
+      if(document.querySelector('#username').value  === '' && document.querySelector('#password').value  === ''){
+        e.preventDefault()
+        document.getElementById('errors').innerHTML = 'Campos de username e senha vazios.'
+      } else if(document.querySelector('#username').value  === '' ){
+        e.preventDefault()
+        document.getElementById('errors').innerHTML = 'Campo de username vazio.'
+      } else if(document.querySelector('#password').value  === '' ){
+        e.preventDefault()
+        document.getElementById('errors').innerHTML = 'Campo de senha vazio.'
+      }
+    })
   </script>
 
 {% endblock %}

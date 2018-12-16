@@ -42,7 +42,7 @@ class SellerController {
       })
     }
 
-    res.redirect('/app/seller/dashboard')
+    return res.redirect('/app/seller/dashboard')
   }
 }
 

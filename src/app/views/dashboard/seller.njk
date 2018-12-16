@@ -33,12 +33,12 @@
     <div>
       <p>Fresca</p>
       <label for="fresh-true">
-        Sim
         <input type="radio" name="fresh" value="1" id="fresh-true">
+        Sim
       </label>
       <label for="fresh-false">
-        Não
         <input type="radio" name="fresh" value="0" id="fresh-false">
+        Não
       </label>
     </div>
     <button type="submit" title="filtrar" ><img src="/images/lupa.svg" height="25"></button>
@@ -63,7 +63,7 @@
         {% if user.admin === false %}
         <form action="/app/seller/dashboard/sold/{{doc.id}}" method="post" class="sale">
 
-        <li><strong>Quantos? <input type="number" name="amount" /></strong></li>
+        <li><strong>Quantos? <input required type="number" name="amount" /></strong></li>
 
           <div>
           <strong>Desconto:</strong> <br>

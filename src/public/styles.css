@@ -1,10 +1,11 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: rgb(141, 19, 189);
+  background: #210a47;
   color: rgb(68, 61, 61);
   min-height: 100vh;
   height: auto;
@@ -13,6 +14,8 @@ body {
   align-items: center;
   font-family: "Montserrat", sans-serif;
   padding: 10px;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 
 button,
@@ -41,7 +44,8 @@ input {
   margin: 10px;
 }
 
-#caps {
+#caps,
+#errors {
   color: red;
   margin-bottom: 10px;
 }
@@ -103,7 +107,7 @@ a[href="/logout"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(255, 255, 255);
+  background: white;
   padding: 20px;
   border-radius: 10px;
 }
@@ -178,7 +182,7 @@ a[href="/logout"] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background: rgb(255, 255, 255);
+  background: white;
   padding: 20px;
   border-radius: 10px;
 }
@@ -199,13 +203,13 @@ a[href="/logout"] {
 .main-wrapper .sales ul {
   list-style: none;
   background: white;
-  padding: 5px 10px;
+  padding: 10px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 10px;
-  width: 250px;
+  width: 270px;
 }
 
 .main-wrapper .sales ul a {

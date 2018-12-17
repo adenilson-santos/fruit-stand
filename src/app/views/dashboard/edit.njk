@@ -1,0 +1,74 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+
+  <h1>Tela de edição do produto.</h1>
+
+  <form action="/app/seller/dashboard/edit/{{sale.id}}" method="post" enctype="multipart/form-data">
+
+    <h3>Fazer mudanças:</h3>
+
+    <label for="image">
+      <img src="/images/{{sale.image}}" height="70">
+    </label>
+
+    <input type="file" name="image" id="image" >
+
+    <label for="fruit">
+      <strong>Nome da fruta</strong>
+
+      <input type="text" name="fruit" required id="fruit" value="{{sale.fruit}}" placeholder="Ex: Melancia">
+    </label>
+
+    <strong>Classificação da fruta</strong>
+    <div>
+      <label for="extra">
+        <input type="radio" name="classification" {% if sale.classification === '0' %} checked  {% endif %} id="extra" value="0">
+      Extra
+      </label>
+      <label for="first">
+        <input type="radio" name="classification" {% if sale.classification === '1' %} checked  {% endif %} id="first" value="1">
+      De primeira
+      </label>
+      <label for="second">
+        <input type="radio" name="classification" {% if sale.classification === '2' %} checked  {% endif %} id="second" value="2">
+      De segunda
+      </label>
+      <label for="third">
+        <input type="radio" name="classification" {% if sale.classification === '3' %} checked  {% endif %} id="third" value="3">
+      De terceira
+      </label>
+    </div>
+
+
+    <label for="fresh">
+      <strong>Fruta fresca? </strong>
+      <input type="checkbox" name="fresh" {% if sale.fresh === true %} checked  {% endif %} value="1" id="fresh"/>
+    </label>
+
+    <label for="amount">
+      <strong>Quantidade</strong>
+      <input type="number" required name="amount" value="{{sale.amount}}" id="amount" />
+    </label>
+    <label for="price">
+     <strong>Valor de venda</strong><br>
+      <strong>R$</strong> <input required type="number" value="{{sale.price}}" min="0.01" step="0.01" value="0.0" name="price" id="price"/>
+    </label>
+
+    <button type="submit">Confirmar mudanças</button>
+
+  <a href="/app/seller/dashboard" class="redirect">Voltar</a>
+  <a href="/logout">Sair</a>
+
+  </form>
+
+  <script type="text/javascript" >
+    const avatarInput = document.getElementById("image");
+    const imgAvatar = document.querySelector("label[for=image] img")
+    avatarInput.onchange = function(e){
+      imgAvatar.classList.add('preview');
+      imgAvatar.src = URL.createObjectURL(e.target.files[0])
+    }
+  </script>
+
+{% endblock %}

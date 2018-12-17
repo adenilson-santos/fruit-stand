@@ -10,6 +10,7 @@ const SessionController = require('./app/controllers/SessionController')
 const DashboardController = require('./app/controllers/DashboardController')
 const SalesController = require('./app/controllers/SalesController')
 const SellerController = require('./app/controllers/SellerController')
+const EditController = require('./app/controllers/EditController')
 
 const authMiddleware = require('./app/middlewares/auth')
 const guestMiddleware = require('./app/middlewares/guest')
@@ -26,6 +27,17 @@ routes.get('/logout', SessionController.destroy)
 
 // routes.get('/signup', guestMiddleware, UserController.create)
 routes.post('/signup', upload.single('avatar'), UserController.store)
+
+routes.get(
+  '/app/seller/dashboard/edit/:id',
+  adminMiddleware,
+  EditController.create
+)
+routes.post(
+  '/app/seller/dashboard/edit/:id',
+  upload.single('image'),
+  EditController.update
+)
 
 routes.get('/app/seller/dashboard', DashboardController.sellerCreate)
 routes.get(

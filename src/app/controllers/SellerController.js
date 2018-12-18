@@ -22,7 +22,7 @@ class SellerController {
 
     sale.save()
 
-    Sold.create({
+    await Sold.create({
       fruit,
       image,
       classification,

@@ -10,7 +10,7 @@ class UserController {
       const { filename } = req.file
       User.create({ ...req.body, avatar: filename })
 
-      return res.redirect('/signup')
+      return res.redirect('/')
     }
 
     User.create({ ...req.body, avatar: '/images/defaultavatar.svg' })

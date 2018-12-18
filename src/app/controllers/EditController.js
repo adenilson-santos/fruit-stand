@@ -31,7 +31,7 @@ class EditController {
       return res.redirect('/app/seller/dashboard')
     }
 
-    Sale.update(
+    await Sale.update(
       { fruit, classification, fresh, price, amount },
       { where: { id: req.params.id } }
     )

@@ -20,7 +20,7 @@ class SalesController {
     if (sale) {
       console.log('entrou', sale.fruit)
       const newAmount = parseInt(amount) + parseInt(sale.amount)
-      Sale.update(
+      await Sale.update(
         { amount: newAmount },
         { where: { fruit, classification, fresh, price } }
       )
@@ -31,7 +31,7 @@ class SalesController {
     if (req.file) {
       const { filename } = req.file
 
-      Sale.create({
+      await Sale.create({
         ...req.body,
         image: filename,
         admin_id: req.session.user.id
@@ -40,7 +40,7 @@ class SalesController {
       return res.redirect('/app/admin/dashboard')
     }
 
-    Sale.create({
+    await Sale.create({
       ...req.body,
       image: 'logo.svg',
       admin_id: req.session.user.id
